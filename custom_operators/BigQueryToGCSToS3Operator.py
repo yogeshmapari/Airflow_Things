@@ -10,28 +10,27 @@ from jinja2 import Template
 
 class BigQueryToGCSToS3Operator(BaseOperator):
     """
-   
-    below are the description of respective params of the oprator
-    :param sql_query: actual sql query whose data will be exported to the file.
-    :param parameters this are the sql dynamic parameters used for replacing according to the envorment :
-    :param gcs_bucket=None the bucket  where we need to put the actual data file in gcs ,
-    :param gcs_path=None the path where we need to put the actual data file in gcs,
-    :param project_id=None  the actual bigquery project will be provided,
-    :param region=None  the region will be needed for making bq connection,
-    :param output_format="csv"/"json"/"parquet"   here we provide the file type ,
-    :param csv_delimiter=","    it will be default delimiter but we can provide as per our requirment,
-    :param header=True   it will control whether we need the header or not,
-    :param quote_symbol=None  it is the way to write data in quote_symbol to file destination,
-    :param s3_transfer=False/True   this value will decide wether to move data to s3 or not,
-    :param s3_bucket=None  it is the actual s3 Bucket where we are taking the file,
-    :param s3_key=None  it is the actual s3 path where we are taking the file,
-    :param gcp_conn_id="google_cloud_default",
-    :param aws_conn_id="aws_default",
-    :param *args are extra arguments,
-    
-    Design by Yogesh Mapari  date : 23-01-2025
+    Below is the description of the respective parameters of the operator:
 
+    :param sql_query: The actual SQL query whose data will be exported to the file.
+    :param parameters: These are the dynamic SQL parameters used for replacing values according to the environment.
+    :param gcs_bucket=None: The bucket where we need to store the actual data file in GCS.
+    :param gcs_path=None: The path where we need to store the actual data file in GCS.
+    :param project_id=None: The BigQuery project ID to be provided.
+    :param region=None: The region required for establishing a BigQuery connection.
+    :param output_format="csv"/"json"/"parquet": The file format for the exported data.
+    :param csv_delimiter=",": The delimiter for CSV files; the default is a comma, but it can be customized as required.
+    :param header=True: Controls whether the file includes a header row.
+    :param quote_symbol=None: Specifies the symbol used to quote data in the destination file.
+    :param s3_transfer=False/True: Determines whether to move the data to S3.
+    :param s3_bucket=None: The S3 bucket where the file will be transferred.
+    :param s3_key=None: The S3 path where the file will be stored.
+    :param gcp_conn_id="google_cloud_default": The GCP connection ID.
+    :param aws_conn_id="aws_default": The AWS connection ID.
+    :param *args: Additional arguments.
 
+    Designed by Yogesh Mapari
+    Date: 23-01-2025
     """
 
     @apply_defaults
